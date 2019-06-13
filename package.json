@@ -47,27 +47,5 @@
   },
   "files": [
     "lib"
-  ],
-  "jest": {
-    "testEnvironment": "node",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "text-summary",
-      "html",
-      "lcov"
-    ],
-    "collectCoverageFrom": [
-      "**/src/**/*.js",
-      "!**/src/providers/push/**",
-      "!**/src/util/**"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    }
-  }
+  ]
 }
