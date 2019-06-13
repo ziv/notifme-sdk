@@ -1,0 +1,18 @@
+import NotificationCatcherProvider from '../notificationCatcherProvider';
+import {SmsRequestType} from '../../models/notification-request';
+
+export default class SmsNotificationCatcherProvider extends NotificationCatcherProvider {
+  async send(request: SmsRequestType): Promise<string> {
+    const {to, from, text} = request.customize ? (await request.customize(this.id, request)) : request;
+    return this.sendToCatcher({
+      to: `${to}@sms`,
+      from,
+      subject: `${text.substring(0, 20)}${text.length > 20 ? '...' : ''}`,
+      text,
+      headers: {
+        'X-type': 'sms',
+        'X-to': `[sms] ${to}`
+      }
+    });
+  }
+}
